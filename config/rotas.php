@@ -21,7 +21,7 @@ $rotas = [
     '/realiza-login' => realizaLogin::class,
     '/logout' => logout::class,
     '/novo-login' => formularioNovoLogin::class,
-    '/novo-login2' => realizaCadastro::class,
+    '/novo-login2' => realizaCadastro::class
 ];
 
 return $rotas;
