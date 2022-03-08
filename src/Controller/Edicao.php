@@ -34,6 +34,7 @@ class Edicao implements RequestHandlerInterface
         );
 
 
+
         $resposta = new Response(302, ['Location' => '/listar-livros']);
 
         if ( is_null($id) || $id === false){

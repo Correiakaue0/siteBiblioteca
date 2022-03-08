@@ -24,6 +24,7 @@ class listarLivros implements RequestHandlerInterface
     {
         //findAll === retorna dados do banco.
         $livros = $this->repositorioDeLivros->findAll(); // buscar algo no banco de dados
+
         $html =  $this->renderizaHtml('livros/listar-livros.php' , [
             'livros' => $livros ,
             'titulo' => 'Lista de Livros'

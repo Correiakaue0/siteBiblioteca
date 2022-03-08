@@ -41,9 +41,7 @@ class exclusao implements RequestHandlerInterface
             $this->defineMensagem('danger','Livro Inexistente !');
             return $resposta;
         }
-        $arquivo = $this->entityManager->getReference(Arquivos::class,$id);
         $livro = $this->entityManager->getReference(Livros::class,$id); //monta o livro
-        $this->entityManager->remove($arquivo);
         $this->entityManager->remove($livro); // remove o livro
         $this->entityManager->flush(); // manda a informação pro banco
         $this->defineMensagem('success','Livro Excluido com sucesso!');
