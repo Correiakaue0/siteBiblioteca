@@ -14,8 +14,11 @@ class EntityManagerCreator
         $isDevMode = false;
 
         $dbParams = array(
-            'driver' => 'pdo_sqlite',
-            'path' => __DIR__ . '/../../db.sqlite'
+            'dbname' => 'biblioteca',
+            'user' => 'root',
+            'password'=>'',
+            'host' => 'localhost',
+            'driver' => 'pdo_mysql'
         );
 
         $config = Setup::createAnnotationMetadataConfiguration(
