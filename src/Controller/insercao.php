@@ -2,6 +2,7 @@
 
 namespace Alura\Cursos\Controller;
 
+use Alura\Cursos\Entity\Capas;
 use Alura\Cursos\Entity\Livros;
 use Alura\Cursos\helper\flashMessageTrait;
 use Doctrine\ORM\EntityManagerInterface;
@@ -37,14 +38,23 @@ class insercao implements RequestHandlerInterface
             $request->getParsedBody()['autor'],
             FILTER_SANITIZE_STRING);
 
+        $genero = filter_var(
+            $request->getParsedBody()['genero'],
+            FILTER_SANITIZE_STRING);
+
         $livro = new Livros();
         $livro->setDescricao($descricao);
         $livro->setTitulo($titulo);
         $livro->setAutor($autor);
+        $livro->setGenero($genero);
 
 
-        require_once 'validacaoArquivo.php';
-        $livro->setImagem($colocar_banco);
+        require_once 'validacaoArquivoCapa.php';
+        $livro->setImagem($contra);
+        require_once 'validacaoArquivoContraCapa.php';
+        $capa = new Capas();
+        $capa->setCapa($contra);
+        $capa->setContraCapa($contraC);
         $id = filter_input(INPUT_GET, 'id',FILTER_VALIDATE_INT);
 
 
@@ -55,11 +65,13 @@ class insercao implements RequestHandlerInterface
 
         if (!is_null($id) && $id !== false) {
             $livro->setId($id);
-
+            $capa->setIdCapa($id);
             $this->entityManager->merge($livro);// altera livro no banco de dados
+            $this->entityManager->merge($capa);
             $this->defineMensagem($tipo, 'Livro atualizado com sucesso');
         } else {
             $this->entityManager->persist($livro);// insere o livro na banco de dados
+            $this->entityManager->persist($capa);
             $this->defineMensagem($tipo, 'Livro inserido com sucesso');
         }
 

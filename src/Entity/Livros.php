@@ -2,6 +2,8 @@
 
 namespace Alura\Cursos\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @Entity
  * @Table(name="Livro")
@@ -9,14 +11,13 @@ namespace Alura\Cursos\Entity;
 class Livros
 {
     /**
-     * @Id
+     * @ID
      * @GeneratedValue
-     * @ORM\ManyToOne(targetEntity="id", inversedBy="Arquivos")
-     * @Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Capas" , inversedBy="id_capa")
+     * @Column(type="integer" , nullable=true)
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="Titulo", inversedBy="Arquivos")
      * @Column(type="string")
      */
     private $Titulo;
@@ -34,6 +35,26 @@ class Livros
      * @Column(type="string")
      */
     private $autor;
+    /**
+     * @Column(type="string")
+     */
+    private $genero;
+
+    /**
+     * @return mixed
+     */
+    public function getGenero()
+    {
+        return $this->genero;
+    }
+
+    /**
+     * @param mixed $genero
+     */
+    public function setGenero($genero): void
+    {
+        $this->genero = $genero;
+    }
 
     /**
      * @param mixed $autor

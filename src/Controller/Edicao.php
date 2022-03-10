@@ -46,7 +46,7 @@ class Edicao implements RequestHandlerInterface
 
         $html =  $this->renderizaHtml('livros/novo-livro.php',[
         'livro' => $livro,
-         'titulo' => 'Alterar Livro '
+         'titulo' => strtoupper('Alterar Livro ')
         ]);
         return new Response(200, [], $html);
 

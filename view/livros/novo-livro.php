@@ -3,17 +3,23 @@
     <form action="/salvar-livro<?= isset($livro) ? '?id='.$livro->getId() : '' ?>" method="post"
     class="container" enctype="multipart/form-data">
         <center>
-            <div class="form-group">
-                <label for="uploadAvatar" >
-                    <p style="display:block" class="btn   btn-sm mt-3"><img src="http://cdn.onlinewebfonts.com/svg/img_150954.png" width="30%" alt="Selecione uma imagem" id="ImgIcon"></p>
-                    <input type="file" id="uploadAvatar" name="uploadAvatar" style="display:;" value="<?= isset($livro) ? $livro->getImagem() : ''; ?>">
+            <div class="">
+                <span>
+
+                    <label for="contraCapa" >
+                    <p style="display:block" class="btn"><img src="/arquivos/capa.png" width="20%" alt="Selecione uma imagem" id="Capa"></p>
+                    <input type="file" id="Capa1" name="Capa1" style="display:;" value="<?= isset($livro) ? $livro->getImagem() : ''; ?>">
                 </label>
+                    <label for="uploadAvatar" >
+                    <p style="display:block" class="btn"><img src="/arquivos/contraCapa.png" width="20%" alt="Selecione uma imagem" id="contra"></p>
+                    <input type="file" id="contra" name="contra" style="display:;" value="<?= isset($livro) ? $livro->getImagem() : ''; ?>">
+                </label>
+                </span>
             </div>
         </center>
-
-        <script>
-            let photo = document.getElementById('ImgIcon');
-            let file = document.getElementById('uploadAvatar');
+       <script>
+            let photo = document.getElementById('Capa');
+            let file = document.getElementById('Capa1');
 
             photo.addEventListener('click', () => {
                 file.click();
@@ -33,7 +39,8 @@
 
                 reader.readAsDataURL(file.files[0]);
             });
-        </script><!-script de trocar imagem->
+        </script>
+
 
 
 
@@ -52,6 +59,11 @@
             <label for="Titulo">Autor</label>
             <input type="text" id="autor" name="autor" class="form-control"
                    value="<?= isset($livro) ? $livro->getAutor() : ''; ?>">
+        </div>
+        <div class="form-group">
+            <label for="genero">Gênero</label>
+            <input type="text" id="genero" name="genero" class="form-control"
+                   value="<?= isset($livro) ? $livro->getGenero() : ''; ?>">
         </div>
         <button class="btn btn-outline-primary mb-5">Salvar</button>
         <a href="listar-livros" type="button" class="btn btn-outline-danger mb-5">Voltar</a>

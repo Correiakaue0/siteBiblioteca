@@ -3,6 +3,7 @@
 namespace Alura\Cursos\Controller;
 
 use Alura\Cursos\Entity\Arquivos;
+use Alura\Cursos\Entity\Capas;
 use Alura\Cursos\Entity\Livros;
 use Alura\Cursos\Entity\Usuario;
 use Alura\Cursos\helper\flashMessageTrait;
@@ -42,7 +43,9 @@ class exclusao implements RequestHandlerInterface
             return $resposta;
         }
         $livro = $this->entityManager->getReference(Livros::class,$id); //monta o livro
+        $capa = $this->entityManager->getReference(Capas::class,$id);
         $this->entityManager->remove($livro); // remove o livro
+        $this->entityManager->remove($capa);
         $this->entityManager->flush(); // manda a informação pro banco
         $this->defineMensagem('success','Livro Excluido com sucesso!');
         return $resposta;

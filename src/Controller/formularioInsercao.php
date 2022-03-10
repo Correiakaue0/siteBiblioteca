@@ -15,7 +15,7 @@ class formularioInsercao implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $html = $this->renderizaHtml('livros/novo-livro.php',[
-            'titulo' => 'Novo Livro'
+            'titulo' => strtoupper('Novo Livro')
         ]);
         return new Response(202,[], $html);
 

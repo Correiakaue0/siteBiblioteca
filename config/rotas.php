@@ -2,6 +2,8 @@
 
 use Alura\Cursos\Controller\{Edicao,
     exclusao,
+    formularioDetalhes,
+    formularioGenero,
     formularioInsercao,
     formularioLogin,
     formularioNovoLogin,
@@ -21,7 +23,9 @@ $rotas = [
     '/realiza-login' => realizaLogin::class,
     '/logout' => logout::class,
     '/novo-login' => formularioNovoLogin::class,
-    '/novo-login2' => realizaCadastro::class
+    '/novo-login2' => realizaCadastro::class,
+    '/generos' => formularioGenero::class,
+    '/detalhes' => formularioDetalhes::class
 ];
 
 return $rotas;
