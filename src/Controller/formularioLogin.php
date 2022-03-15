@@ -14,7 +14,7 @@ class formularioLogin implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
       $html =  $this->renderizaHtml('login/login.php',[
-            'titulo' => strtoupper('Login')
+            'Titulo' => strtoupper('Login')
 
         ]);
       return new Response(200, [], $html);

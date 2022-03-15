@@ -10,7 +10,6 @@ class Capas
     /**
      * @id
      * @GeneratedValue
-     * @ORM\ManyToOne(targetEntity="Livros" , mappedBy="id")
      * @Column(type="integer" , nullable=true)
      */
     private $id_capa;
@@ -23,6 +22,19 @@ class Capas
      * @Column(type="string", nullable=true)
      */
     private $contraCapa;
+    /**
+     * @ManyToOne(targetEntity="Livros", inversedBy="Imagem", cascade={"remove", "persist"})
+     */
+    private $livro;
+
+    /**
+     * @param mixed $livro
+     */
+    public function setLivro(Livros $livro): self
+    {
+        $this->livro = $livro;
+        return $this;
+    }
 
     /**
      * @return mixed

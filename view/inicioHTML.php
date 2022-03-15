@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="icon" type="imagem/png" href="https://cdn-icons-png.flaticon.com/512/225/225932.png" />
     <title>Biblioteca</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -20,9 +22,9 @@
         </div>
     </nav>
 
-<div class="container ">
+<div class="container">
     <div class="jumbotron">
-        <h1><?= $titulo ?></h1>
+        <h1><?= $Titulo ?></h1>
     </div>
     <?php if (isset($_SESSION['mensagem'])) : ?>
         <div class="alert alert-<?= $_SESSION['tipoMensagem'];  ?>">

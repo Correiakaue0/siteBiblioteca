@@ -1,24 +1,34 @@
 <?php include __DIR__.'/../inicioHTML.php';?>
-<?php foreach ($livros as $livro):?>
+<?php foreach ($livros as $livro) :
+extract($livro);
+?>
+<body id="body">
+<!-- hero area -->
+<section class="section">
+    <a href="listar-livros" type="button" class="btn btn-outline-danger mb-5">Voltar</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center mb-5 mb-md-0 row">
+                <img src="arquivos/capa/<?= $capa ?>"  class="card-img-top " style="width: 50%">
+                <img src="arquivos/contraCapa/<?= $contraCapa ?>"  class="card-img-top "style="width: 50%">
+
+            </div>
+            <div class="col-md-6 align-self-center text-center text-md-left">
+                <div class="block">
+                    <h1 class="font-weight-bold mb-4 font-size-60"><?= $titulo ?></h1>
+                    <p class="mb-4"><?= $descricao ?></p>
+                    <p class="mb-4"><?= $autor ?></p>
+                    <p class="mb-4"><?= $genero ?></p>
+
+                </div>
+                <a href="/alterar-livro?id=<?= $id;  ?>" class="btn btn-outline-info">Alterar</a>
+                <a href="/excluir-livro?id=<?= $id;  ?>" class="btn btn-outline-danger"> Excluir </a>
+            </div>
+        </div><!-- .row close -->
+    </div><!-- .container close -->
+</section><!-- header close -->
 
 <?php
-    extract($livro);
-    echo "$id $Titulo $genero $contraCapa $capa \n";
-?>
-    <div class="container mb-2">
-        <a href="listar-livros" type="button" class="btn btn-outline-danger ">Voltar</a>
-    </div>
-<span class="row">
-     <h1>Titulo: <?= $Titulo ?></h1><br>
-     <h1>Genero: <?=$genero ?></h1>
-    <img src="<?="arquivos/capa/".$capa; ?>" class="img-fluid animated" width="30%" alt="">
-    <img src="<?="arquivos/contraCapa/".$contraCapa; ?>" class="img-fluid animated" width="30%" alt="">
-</span>
-<br>
-</br>
+endforeach;
+include __DIR__.'/../fimHTML.php';?>
 
-
-
-
-<?php endforeach;?>
-<?php  include __DIR__.'/../fimHTML.php';?>

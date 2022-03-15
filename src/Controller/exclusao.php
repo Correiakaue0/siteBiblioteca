@@ -8,7 +8,9 @@ use Alura\Cursos\Entity\Livros;
 use Alura\Cursos\Entity\Usuario;
 use Alura\Cursos\helper\flashMessageTrait;
 use Alura\Cursos\helper\TraitHTML;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\ORMException;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,7 +22,7 @@ class exclusao implements RequestHandlerInterface
 
     use flashMessageTrait;
     /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
+     * @var ObjectRepository
      */
     private $entityManager;
 
@@ -31,7 +33,7 @@ class exclusao implements RequestHandlerInterface
     }
 
     /**
-     * @throws \Doctrine\ORM\ORMException
+     * @throws ORMException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -43,9 +45,7 @@ class exclusao implements RequestHandlerInterface
             return $resposta;
         }
         $livro = $this->entityManager->getReference(Livros::class,$id); //monta o livro
-        $capa = $this->entityManager->getReference(Capas::class,$id);
         $this->entityManager->remove($livro); // remove o livro
-        $this->entityManager->remove($capa);
         $this->entityManager->flush(); // manda a informação pro banco
         $this->defineMensagem('success','Livro Excluido com sucesso!');
         return $resposta;

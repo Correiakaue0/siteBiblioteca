@@ -25,7 +25,7 @@ $rotas = [
     '/novo-login' => formularioNovoLogin::class,
     '/novo-login2' => realizaCadastro::class,
     '/generos' => formularioGenero::class,
-    '/detalhes' => formularioDetalhes::class
+    '/detalhes' => formularioDetalhes::class,
 ];
 
 return $rotas;

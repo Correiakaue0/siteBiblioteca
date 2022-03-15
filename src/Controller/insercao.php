@@ -15,7 +15,7 @@ class insercao implements RequestHandlerInterface
 {
     use flashMessageTrait;
     /**
-     * @var \Doctrine\ORM\EntityManagerInterface
+     * @var EntityManagerInterface
      */
     private $entityManager;
 
@@ -50,9 +50,9 @@ class insercao implements RequestHandlerInterface
 
 
         require_once 'validacaoArquivoCapa.php';
-        $livro->setImagem($contra);
         require_once 'validacaoArquivoContraCapa.php';
         $capa = new Capas();
+        $capa->setLivro($livro);
         $capa->setCapa($contra);
         $capa->setContraCapa($contraC);
         $id = filter_input(INPUT_GET, 'id',FILTER_VALIDATE_INT);
@@ -65,7 +65,6 @@ class insercao implements RequestHandlerInterface
 
         if (!is_null($id) && $id !== false) {
             $livro->setId($id);
-            $capa->setIdCapa($id);
             $this->entityManager->merge($livro);// altera livro no banco de dados
             $this->entityManager->merge($capa);
             $this->defineMensagem($tipo, 'Livro atualizado com sucesso');

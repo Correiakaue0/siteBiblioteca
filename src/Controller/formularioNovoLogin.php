@@ -14,7 +14,7 @@ class formularioNovoLogin implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $html =  $this->renderizaHtml('login/novo-login.php',[
-            'titulo' => strtoupper('Cadastrar')
+            'Titulo' => strtoupper('Cadastrar')
         ]);
         return new Response(202,[],$html);
     }

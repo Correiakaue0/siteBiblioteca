@@ -2,7 +2,8 @@
 
 namespace Alura\Cursos\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity
@@ -13,7 +14,6 @@ class Livros
     /**
      * @ID
      * @GeneratedValue
-     * @ORM\ManyToOne(targetEntity="Capas" , inversedBy="id_capa")
      * @Column(type="integer" , nullable=true)
      */
     private $id;
@@ -28,7 +28,7 @@ class Livros
     private $descricao;
 
     /**
-     * @Column(type="string", nullable=true)
+     * @OneToMany(targetEntity="Capas", mappedBy="livro", cascade={"remove", "persist"})
      */
     private $Imagem;
     /**
@@ -40,9 +40,19 @@ class Livros
      */
     private $genero;
 
-    /**
-     * @return mixed
-     */
+    public function __construct()
+    {
+        $this->Imagem = new ArrayCollection();
+    }
+
+    public function addImagem(Capas $capa): Livros
+    {
+        $this->Imagem->add($capa);
+        $capa->setCapa($this);
+        return $this;
+        
+    }
+
     public function getGenero()
     {
         return $this->genero;
@@ -77,10 +87,11 @@ class Livros
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId($id): void
     {
         $this->id = $id;
     }
+
 
     public function getDescricao(): string
     {
@@ -91,37 +102,19 @@ class Livros
     {
         $this->descricao = $descricao;
     }
-
-    /**
-     * @return mixed
-     */
     public function getTitulo()
     {
         return $this->Titulo;
     }
 
-    /**
-     * @param mixed $Titulo
-     */
     public function setTitulo($Titulo): void
     {
         $this->Titulo = $Titulo;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getImagem()
+    public function getImagem(): ArrayCollection
     {
         return $this->Imagem;
     }
 
-    /**
-     * @param mixed $Imagem
-     */
-    public function setImagem($Imagem): void
-    {
-        $this->Imagem = $Imagem;
-    }
 
 }

@@ -1,7 +1,11 @@
 <?php include __DIR__.'/../inicioHTML.php';?>
+<?php foreach ($livros as $livro): ?>
+    <?php
+    extract($livro);
+    ?>
 
-    <form action="/salvar-livro" method="post"
-    class="container" enctype="multipart/form-data">
+    <form action="/salvar-livro<?= isset($id) ? '?id='.$id : '' ?>" method="post"
+          class="container" enctype="multipart/form-data">
         <center>
             <div class="">
                 <span>
@@ -17,7 +21,7 @@
                 </span>
             </div>
         </center>
-       <script>
+        <script>
             let photo = document.getElementById('Capa');
             let file = document.getElementById('Capa1');
 
@@ -48,26 +52,27 @@
         <div class="form-group">
             <label for="Titulo">Titulo</label>
             <input type="text" id="titulo" name="titulo" class="form-control"
-                   value="">
+                   value="<?= isset($titulo) ? $titulo : ''; ?>">
         </div>
         <div class="form-group">
             <label for="descricao">Descrição</label>
             <input type="text" id="descricao" name="descricao" class="form-control"
-                   value="">
+                   value="<?= isset($descricao) ? $descricao : ''; ?>">
         </div>
         <div class="form-group">
             <label for="Titulo">Autor</label>
             <input type="text" id="autor" name="autor" class="form-control"
-                   value="">
+                   value="<?= isset($autor) ? $autor : ''; ?>">
         </div>
         <div class="form-group">
             <label for="genero">Gênero</label>
             <input type="text" id="genero" name="genero" class="form-control"
-                   value="">
+                   value="<?= isset($genero) ? $genero : ''; ?>">
         </div>
         <button class="btn btn-outline-primary mb-5">Salvar</button>
         <a href="listar-livros" type="button" class="btn btn-outline-danger mb-5">Voltar</a>
     </form>
 
 <?php
-    include __DIR__.'/../fimHTML.php';?>
+endforeach;
+include __DIR__.'/../fimHTML.php';?>

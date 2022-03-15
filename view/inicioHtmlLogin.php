@@ -20,7 +20,7 @@
 <br>
 <div class="container ">
     <div class="jumbotron">
-        <center><h1><?=$titulo;?></h1></center>
+        <center><h1><?=$Titulo;?></h1></center>
         <br>
         <?php if (isset($_SESSION['mensagem'])) : ?>
         <div class="alert alert-<?= $_SESSION['tipoMensagem'];  ?>">

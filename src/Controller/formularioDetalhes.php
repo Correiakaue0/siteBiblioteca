@@ -19,8 +19,11 @@ class formularioDetalhes implements RequestHandlerInterface
 
     private $repositorioDeLivros;
 
+    private $entityManager;
+
     public function __construct(EntityManagerInterface $entityManager)
     {
+        $this->entityManager = $entityManager;
         $this->repositorioDeLivros = $entityManager->getRepository(Livros::class);
     }
 
@@ -31,25 +34,20 @@ class formularioDetalhes implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $id = filter_var($request->getQueryParams()['id'],FILTER_VALIDATE_INT);
+        $conn = $this->entityManager->getConnection();
+        $conn->createQueryBuilder();
 
-        $conn = DriverManager::getConnection([
-                'dbname' => 'biblioteca',
-                'user' => 'root',
-                'password'=>'',
-                'host' => 'localhost',
-                'driver' => 'pdo_mysql']
-        );
 
-        $sql = "SELECT id, Titulo,genero,contraCapa, capa FROM Livro INNER JOIN capas ON capas.id_capa = livro.id where id = $id";
+        $sql = "SELECT * FROM livro l INNER JOIN capas c ON l.id = c.livro_id where id = $id";
         $result = $conn->executeQuery($sql);
-        $livro = $result->fetchAll();
+        $livros = $result->fetchAll();
 
 
 
 
         $html = $this->renderizaHtml('livros/detalhes.php',[
-            'titulo' =>  '',
-            'livros' => $livro
+            'Titulo' =>  'detalhes',
+            'livros' => $livros
         ]);
         return new Response(202,[], $html);
     }

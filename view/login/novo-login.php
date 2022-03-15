@@ -34,4 +34,5 @@
         <a href="/login" class="btn btn-outline-danger" type="submit">Voltar</a>
     </div>
 </form>
+</div>
 <?php include __DIR__ . '/../fimHTML.php';?>
