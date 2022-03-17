@@ -1,23 +1,2 @@
-'use strict'
-
-
-let file = document.getElementById('uploadAvatar');
-
-photo.addEventListener('click', () => {
-    file.click();
-});
-
-file.addEventListener('change', () => {
-
-    if (file.files.length <= 0) {
-        return;
-    }
-
-    let reader = new FileReader();
-
-    reader.onload = () => {
-        photo.src = reader.result;
-    }
-
-    reader.readAsDataURL(file.files[0]);
-});
+let imagem = document.querySelectorAll("#imagem");
+ console.log(imagem);

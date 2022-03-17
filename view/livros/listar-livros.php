@@ -24,7 +24,7 @@
       extract($livro);
       ?>
 
-      <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
           <div class="card" style="width:18rem;">
               <img src="arquivos/capa/<?=$capa?>"  class="card-img-top">
                 <div class="card-body">
@@ -43,7 +43,6 @@
               </div>
           </div>
       </div>
-
 
 
   <?php endforeach;

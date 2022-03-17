@@ -10,7 +10,7 @@ class Capas
     /**
      * @id
      * @GeneratedValue
-     * @Column(type="integer" , nullable=true)
+     * @Column(type="integer")
      */
     private $id_capa;
     /**
