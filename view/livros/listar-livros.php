@@ -6,12 +6,10 @@
   extract($livro);
   ?>
     <div style="text-align: center;">
-        <span>
-        <div class="btn-group mb-2" role="group" aria-label="Basic example">
-            <a href="/generos?genero=<?= isset($genero) ? $genero : ""; ?>" type="button" id="genero" class="btn btn-primary"><?= ucfirst($genero);?>
+        <div class="container">
+            <a href="/generos?genero=<?= isset($genero) ? $genero : ""; ?>" type="button" id="genero" class="btn btn-primary mb-2"><?= ucfirst($genero);?>
             </a>
          </div>
-        </span>
     </div>
 <?php endforeach;?>
 
@@ -24,11 +22,11 @@
       extract($livro);
       ?>
 
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-          <div class="card" style="width:18rem;">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-2 con" >
+          <div class="card" style="width:18rem;" id="card">
               <img src="arquivos/capa/<?=$capa?>"  class="card-img-top">
-                <div class="card-body">
-                  <h5 class="card-title"><?php echo $titulo ;?></h5>
+                <div class="card-body" id="livro">
+                  <h5 class="card-title" id="titulo" ><?php echo $titulo ;?></h5>
                   <p class="card-text">
                     <p class="card-text  text-truncate"><?php echo $descricao; ?></p>
                   </p>
@@ -43,6 +41,10 @@
               </div>
           </div>
       </div>
+      <script src="/buscar-livro.js"></script>
+
+
+
 
 
   <?php endforeach;

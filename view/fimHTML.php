@@ -1,4 +1,5 @@
 </div>
+
 <!-- Footer -->
 <footer class="bg-dark text-center text-white">
     <div class="container p-4">
@@ -16,5 +17,6 @@
         <a class="text-white" href="">KaueCorreia</a>
     </div>
 </footer>
+
 </body>
 </html>

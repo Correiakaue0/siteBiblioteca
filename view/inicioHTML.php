@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <link rel="icon" type="imagem/png" href="https://cdn-icons-png.flaticon.com/512/225/225932.png" />
     <title>Biblioteca</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -16,6 +14,9 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/225/225932.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
                 Biblioteca
             </a>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="filtrar-livros" id="filtrar-livros">
+            </form>
             <form class="d-flex" action="/logout">
                 <button class="btn btn-outline-danger" type="submit">Sair</button>
             </form>

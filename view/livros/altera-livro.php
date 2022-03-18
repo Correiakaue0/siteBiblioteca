@@ -12,39 +12,61 @@
 
                     <label for="contraCapa" >
                     <p style="display:block" class="btn"><img src="/arquivos/capa.png" width="20%" alt="Selecione uma imagem" id="Capa"></p>
-                    <input type="file" id="Capa1" name="Capa1" style="display:;" value="">
+                    <input type="file" id="fileCapa" name="Capa" style="display:;" value="">
                 </label>
+                    <script>
+                        let photo = document.getElementById('Capa');
+                        let file = document.getElementById('fileCapa');
+
+                        photo.addEventListener('click', () => {
+                            file.click();
+                        });
+
+                        file.addEventListener('change', () => {
+
+                            if (file.files.length <= 0) {
+                                return;
+                            }
+
+                            let reader = new FileReader();
+
+                            reader.onload = () => {
+                                photo.src = reader.result;
+                            }
+
+                            reader.readAsDataURL(file.files[0]);
+                        });
+                    </script>
                     <label for="uploadAvatar" >
-                    <p style="display:block" class="btn"><img src="/arquivos/contraCapa.png" width="20%" alt="Selecione uma imagem" id="contra"></p>
-                    <input type="file" id="contra" name="contra" style="display:;" value="">
+                    <p style="display:block" class="btn"><img src="/arquivos/contraCapa.png" width="20%" alt="Selecione uma imagem" id="contraCapa"></p>
+                    <input type="file" id="fileContraCapa" name="contra" style="display:;" value="">
                 </label>
                 </span>
             </div>
         </center>
         <script>
-            let photo = document.getElementById('Capa');
-            let file = document.getElementById('Capa1');
+            let photo2 = document.getElementById('contraCapa');
+            let file2 = document.getElementById('fileContraCapa');
 
-            photo.addEventListener('click', () => {
-                file.click();
+            photo2.addEventListener('click', () => {
+                file2.click();
             });
 
-            file.addEventListener('change', () => {
+            file2.addEventListener('change', () => {
 
-                if (file.files.length <= 0) {
+                if (file2.files.length <= 0) {
                     return;
                 }
 
-                let reader = new FileReader();
+                let ler = new FileReader();
 
-                reader.onload = () => {
-                    photo.src = reader.result;
+                ler.onload = () => {
+                    photo2.src = ler.result;
                 }
 
-                reader.readAsDataURL(file.files[0]);
+                ler.readAsDataURL(file2.files[0]);
             });
         </script>
-
 
 
 

@@ -9,28 +9,28 @@
                     <input type="file" id="fileCapa" name="Capa1" style="display:;" value="">
                 </label>
                     <script>
-            let photo = document.getElementById('Capa');
-            let file = document.getElementById('fileCapa');
+                        let photo = document.getElementById('Capa');
+                        let file = document.getElementById('fileCapa');
 
-            photo.addEventListener('click', () => {
-                file.click();
-            });
+                        photo.addEventListener('click', () => {
+                            file.click();
+                        });
 
-            file.addEventListener('change', () => {
+                        file.addEventListener('change', () => {
 
-                if (file.files.length <= 0) {
-                    return;
-                }
+                            if (file.files.length <= 0) {
+                                return;
+                            }
 
-                let reader = new FileReader();
+                            let reader = new FileReader();
 
-                reader.onload = () => {
-                    photo.src = reader.result;
-                }
+                            reader.onload = () => {
+                                photo.src = reader.result;
+                            }
 
-                reader.readAsDataURL(file.files[0]);
-            });
-        </script>
+                            reader.readAsDataURL(file.files[0]);
+                        });
+                    </script>
                     <label for="contraCapa" >
                     <p style="display:block" class="btn"><img src="/arquivos/contraCapa.png" width="20%" alt="Selecione uma imagem" id="contraCapa"></p>
                     <input type="file" id="fileContraCapa" name="contra" style="display:;" value="">
